@@ -1,0 +1,190 @@
+AlphaEmu - END USER LICENSE AGREEMENT                         X-01-00
+=====================================                         31-OCT-2026
+
+This End User License Agreement ("Agreement") is between you (a person or an
+organisation, "You") and Ruslan R. Laishev ("Licensor"), a natural person,
+the author and copyright owner of AlphaEmu. "StarLet Squad" is the name the
+Licensor publishes his work under; it is not a legal entity and is not a
+party to this Agreement.
+
+By downloading, installing, copying or running AlphaEmu You accept this
+Agreement. If You do not accept it, do not download, install, copy or run
+AlphaEmu, and delete any copies You have.
+
+1. DEFINITIONS
+
+   "Software" - the AlphaEmu emulator in binary form (the files
+   alphaemu-<version>-<architecture>), its documentation, sample
+   configuration files and helper scripts, as published by the Licensor in
+   the kit at https://codeberg.org/SysManOne/yaAlphaEmu, and any update the
+   Licensor publishes there.
+
+   "Guest Software" - any operating system, firmware, program or data that
+   You run inside the Software (for example OpenVMS Alpha, its layered
+   products and their licence keys (PAKs)).
+
+   "Third-Party Components" - the components listed in the file NOTICES.txt,
+   which come under their own licences.
+
+2. GRANT OF LICENCE
+
+   2.1 The Software is freeware for non-commercial use. Subject to this
+       Agreement the Licensor grants You a free of charge, non-exclusive,
+       worldwide, perpetual licence to install and run any number of copies
+       of the Software, on any number of computers, for non-commercial use.
+
+       "Non-commercial use" is private or hobby use, teaching and learning,
+       non-profit research, and the evaluation of the Software by anyone,
+       a business included, before it decides on a commercial licence.
+
+       Any other use is commercial use, in particular: running production
+       work of a business on the Software, providing services to others for
+       a fee with it, or using it in or with a product that is sold.
+       Commercial use needs a separate commercial licence from the
+       Licensor (section 13.5).
+
+   2.2 You may copy and give away the Software to others, free of charge,
+       only as the whole, unmodified kit as the Licensor published it,
+       including this Agreement, NOTICES.txt and the SHA256 checksums. You
+       may not sell the Software, rent or lease it, or charge for it, except
+       a reasonable fee for the media You carry it on. You may bundle the
+       Software in, or offer it with, a commercial product or service
+       only with the Licensor's written permission.
+
+   2.3 No other right is granted. All rights not expressly granted here are
+       reserved by the Licensor.
+
+3. RESTRICTIONS
+
+   3.1 You may not, and may not allow others to, except as section 3.2
+       and section 5 allow:
+
+   a) modify, adapt or translate the Software, or make works derived from
+      it;
+   b) reverse engineer, decompile or disassemble the Software, except, and
+      only to the extent, that the applicable law expressly allows it
+      despite this restriction (for example to achieve interoperability);
+   c) remove or change any notice of copyright, trademark or licence in
+      the Software;
+   d) publish the Software, or any part of it, under another name or as
+      Your own work;
+   e) use the Software commercially without a commercial licence;
+   f) use the Software in breach of any law, including export control laws.
+
+   3.2 Exception: the sample configuration files, helper scripts and
+       sample source files of the kit (the directory samples/: for example
+       alphaemu-native.cfg and the *.COM, *.sh, *.py and *.C files) are not
+       under sections 2 and 3. They are licensed to You under the Apache
+       License, Version 2.0 (LICENSE-Apache-2.0.txt), and You may use,
+       change and give them away under its terms.
+
+4. GUEST SOFTWARE
+
+   4.1 The Software contains no code of OpenVMS, no DEC/HP SRM console
+       firmware, no DEC PALcode and no firmware of any adapter. No Guest
+       Software comes with it.
+
+   4.2 You alone are responsible for obtaining the Guest Software and the
+       right to run it, from its owners, under their terms, including the
+       licence keys (PAKs) of OpenVMS and its layered products. Running
+       Guest Software in the Software gives You no licence to that Guest
+       Software.
+
+   4.3 The Software is an independent implementation made for
+       interoperability. It is not affiliated with, endorsed or supported by
+       Hewlett Packard Enterprise, VMS Software, Inc., QLogic or any other
+       owner of a name used in the Software or its documentation; such names
+       are used only to say what the Software models and what runs on it.
+       Some identification strings that Guest Software expects to read from
+       the hardware are reproduced for that purpose only.
+
+5. THIRD-PARTY COMPONENTS
+
+   The Software includes the Third-Party Components listed in NOTICES.txt.
+   Each is licensed to You under its own licence, quoted or referenced
+   there. Nothing in this Agreement limits the rights that those licences
+   give You. Where a Third-Party Component's licence and this Agreement
+   conflict, that licence prevails for that component.
+
+6. OWNERSHIP
+
+   The Software is licensed, not sold. The Licensor keeps all title,
+   copyright and other intellectual property rights in the Software. Your
+   copies are covered by this Agreement.
+
+7. NO DATA COLLECTION
+
+   The Software sends no data about You, Your computer or Your use of it to
+   the Licensor or anyone else. It opens network connections only as You
+   configure it (for example the emulated network adapters and the console
+   port).
+
+8. NO SUPPORT
+
+   The Licensor has no duty to support, maintain or update the Software.
+   Reports of defects are welcome at the address in section 13, and the
+   Licensor may answer them at its own discretion.
+
+9. NO WARRANTY
+
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+   OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, ACCURACY AND
+   NON-INFRINGEMENT. THE WHOLE RISK AS TO THE QUALITY AND PERFORMANCE OF THE
+   SOFTWARE, AND OF THE GUEST SOFTWARE RUN ON IT, IS WITH YOU. AN EMULATOR
+   MAY BEHAVE DIFFERENTLY FROM THE HARDWARE IT MODELS; YOU MUST TEST YOUR
+   OWN WORK ON IT BEFORE YOU RELY ON IT.
+
+10. NOT FOR HIGH-RISK USE
+
+   The Software is not designed or intended for use where its failure could
+   lead to death, personal injury, or severe physical or environmental
+   damage (for example the control of nuclear plants, aircraft, medical
+   life support or weapons). You use it there at Your own risk.
+
+11. LIMITATION OF LIABILITY
+
+   TO THE MAXIMUM EXTENT PERMITTED BY THE APPLICABLE LAW, IN NO EVENT SHALL
+   THE LICENSOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+   EXEMPLARY OR CONSEQUENTIAL DAMAGES (INCLUDING LOSS OF DATA, PROFITS,
+   BUSINESS OR USE, OR THE COST OF SUBSTITUTE GOODS OR SERVICES), HOWEVER
+   CAUSED AND ON ANY THEORY OF LIABILITY, ARISING OUT OF THE USE OF OR
+   INABILITY TO USE THE SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH
+   DAMAGE. Some laws do not allow these exclusions; there they apply to the
+   extent the law allows.
+
+12. TERMINATION
+
+   12.1 This Agreement is in force until it ends. It ends at once, without
+        notice, if You breach it. You may end it at any time by deleting
+        all Your copies of the Software.
+
+   12.2 When it ends You must stop using the Software and delete all Your
+        copies. Sections 4, 5, 6, 9, 10, 11 and 13 survive the end.
+
+   12.3 The Licensor may publish new versions of the Software under a
+        different agreement. The version You received stays under the
+        agreement it came with.
+
+13. GENERAL
+
+   13.1 This Agreement is governed by the law of the Russian Federation,
+        without regard to its conflict-of-laws rules. Any dispute arising
+        from it is settled by the courts of Saint Petersburg, Russian
+        Federation.
+
+   13.2 If any part of this Agreement is held unenforceable, that part is
+        changed only as much as is needed to make it enforceable, and the
+        rest stays in force.
+
+   13.3 This Agreement is the entire agreement between You and the Licensor
+        about the Software. A failure to enforce any part is not a waiver.
+
+   13.4 This Agreement is written in English. A translation is given for
+        convenience only; where they differ, the English text prevails.
+
+   13.5 Contact: licence questions and commercial licences -
+        zator@yandex.ru; bug reports -
+        https://codeberg.org/SysManOne/yaAlphaEmu (issues).
+
+Copyright (C) 2026 Ruslan R. Laishev (StarLet Squad). All rights reserved.
