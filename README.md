@@ -17,14 +17,17 @@ AlphaEmu - системный эмулятор AlphaServer ES40 (процесс�
 Пример вывода `--version` (сборка для x86-64):
 
 ```
-AlphaEmu 1.00.47 (X01-00ECO47), DEC Alpha EV6 / AlphaServer ES40 emulator
+AlphaEmu 1.00.51 (X01-00ECO51), DEC Alpha EV6 / AlphaServer ES40 emulator
 Built for x86-64, guest code translator yes, DEC SRM console not included
 53C810 SCSI adapter (tape, scsi.disk*) not included
 ```
 
 Что моделируется:
 
-* 1-4 процессора (vCPU), память гостя до 16 ГБ (`memory.bits` 26..34);
+* 1-4 процессора (vCPU), память гостя до 32 ГБ (`memory.bits` 26..35);
+* модель AlphaServer GS80 (Wildfire, `system.model = gs80`): до 8 vCPU в
+  двух QBB, память поровну по QBB, RAD в OpenVMS (RAD_SUPPORT 207);
+  системный диск - только на ISP1040;
 * диски на IDE (`DQA0:`, `DQB0:`) и на SCSI-адаптере QLogic ISP1040
   (`DKA0:`), образы - файлы хоста; образ компакт-диска OpenVMS - как IDE-диск;
 * сеть: DE500-BA (до четырёх адаптеров, `EWA0:`-`EWD0:`), Intel 82540EM
@@ -164,15 +167,18 @@ is freeware for non-commercial use; commercial licence separately (see "Licence"
 Sample `--version` output (x86-64 build):
 
 ```
-AlphaEmu 1.00.47 (X01-00ECO47), DEC Alpha EV6 / AlphaServer ES40 emulator
+AlphaEmu 1.00.51 (X01-00ECO51), DEC Alpha EV6 / AlphaServer ES40 emulator
 Built for x86-64, guest code translator yes, DEC SRM console not included
 53C810 SCSI adapter (tape, scsi.disk*) not included
 ```
 
 What is modelled:
 
-* 1 to 4 processors (vCPUs), guest memory up to 16 GB (`memory.bits`
-  26..34);
+* 1 to 4 processors (vCPUs), guest memory up to 32 GB (`memory.bits`
+  26..35);
+* an AlphaServer GS80 model (Wildfire, `system.model = gs80`): up to 8 vCPUs
+  in two QBBs, the memory split over the QBBs, RADs in OpenVMS
+  (RAD_SUPPORT 207); the system disk on the ISP1040 only;
 * disks on IDE (`DQA0:`, `DQB0:`) and on the QLogic ISP1040 SCSI adapter
   (`DKA0:`); the images are host files; the OpenVMS CD image is used as an
   IDE disk;
