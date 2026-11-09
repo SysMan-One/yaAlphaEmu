@@ -17,7 +17,7 @@ AlphaEmu - системный эмулятор AlphaServer ES40 (процесс�
 Пример вывода `--version` (сборка для x86-64):
 
 ```
-AlphaEmu 1.00.51 (X01-00ECO51), DEC Alpha EV6 / AlphaServer ES40 emulator
+AlphaEmu 1.00.53 (X01-00ECO53), DEC Alpha EV6 / AlphaServer ES40 emulator
 Built for x86-64, guest code translator yes, DEC SRM console not included
 53C810 SCSI adapter (tape, scsi.disk*) not included
 ```
@@ -44,8 +44,8 @@ Built for x86-64, guest code translator yes, DEC SRM console not included
 `alphaemu-<ver>-<arch>.tar.gz.sha256`. Архитектуры:
 
 * `x86_64` - статический двоичный файл, с транслятором гостевого кода (JIT);
-* `aarch64` - статический двоичный файл, только интерпретатор, без JIT
-  (заметно медленнее).
+* `aarch64` - статический двоичный файл, с транслятором гостевого кода (JIT,
+  с версии 1.00.53).
 
 В архиве:
 
@@ -64,8 +64,8 @@ Built for x86-64, guest code translator yes, DEC SRM console not included
 
 ### Требования к хосту
 
-* 64-битный Linux: x86-64 с инструкцией CMPXCHG16B (JIT есть только здесь)
-  или aarch64 (только интерпретатор);
+* 64-битный Linux: x86-64 с инструкцией CMPXCHG16B или aarch64 (ARMv8),
+  JIT есть на обеих;
 * память хоста не меньше памяти гостя плюс запас; одно ядро хоста на один vCPU;
 * для сети - TAP-устройства (нужны права root); для `mem.lock` и
   `host.rt_prio` - право блокировать память и использовать приоритеты
@@ -117,8 +117,8 @@ OpenVMS и на слойные продукты. Ничего из этого н
 * Не более четырёх процессоров; контрольная точка восстанавливается только
   той же сборкой эмулятора с тем же числом CPU и объёмом памяти и не содержит
   данных дисков.
-* aarch64: только интерпретатор, скорость много ниже, чем на x86-64.
-* aarch64: SMP (`cpu.count` больше 1) - экспериментальный; для работы берите 1 CPU.
+* aarch64: скорость зависит от процессора хоста; JIT здесь новый (с 1.00.53),
+  проверен на 1, 2 и 4 vCPU (Neoverse-N1, Cortex-A72).
 * Собственная консоль умеет загрузку, SET/SHOW переменных и список устройств;
   диагностики и обновления прошивки в ней нет.
 
@@ -167,7 +167,7 @@ is freeware for non-commercial use; commercial licence separately (see "Licence"
 Sample `--version` output (x86-64 build):
 
 ```
-AlphaEmu 1.00.51 (X01-00ECO51), DEC Alpha EV6 / AlphaServer ES40 emulator
+AlphaEmu 1.00.53 (X01-00ECO53), DEC Alpha EV6 / AlphaServer ES40 emulator
 Built for x86-64, guest code translator yes, DEC SRM console not included
 53C810 SCSI adapter (tape, scsi.disk*) not included
 ```
@@ -195,7 +195,7 @@ For each architecture there is an archive `alphaemu-<ver>-<arch>.tar.gz` and
 a file `alphaemu-<ver>-<arch>.tar.gz.sha256`. The architectures:
 
 * `x86_64` - a static binary with the guest code translator (JIT);
-* `aarch64` - a static binary, interpreter only, no JIT (much slower).
+* `aarch64` - a static binary with the guest code translator (JIT, since 1.00.53).
 
 Inside the archive:
 
@@ -214,8 +214,8 @@ Inside the archive:
 
 ### Host requirements
 
-* 64-bit Linux: x86-64 with the CMPXCHG16B instruction (the JIT is only
-  there) or aarch64 (interpreter only);
+* 64-bit Linux: x86-64 with the CMPXCHG16B instruction or aarch64 (ARMv8),
+  the JIT on both;
 * host memory of at least the guest memory plus some reserve; one host core
   per vCPU;
 * for networking, TAP devices (root is needed); for `mem.lock` and
@@ -255,8 +255,8 @@ layered products you use. None of it is provided.
   runs on an X server of the host.
 * At most four CPUs; a checkpoint is restored only by the same build with the
   same CPU count and memory, and holds no disk contents.
-* aarch64: interpreter only, much slower than x86-64.
-* aarch64: SMP (`cpu.count` above 1) is experimental; use 1 CPU for real work.
+* aarch64: the speed depends on the host processor; the JIT is new there
+  (since 1.00.53), checked on 1, 2 and 4 vCPUs (Neoverse-N1, Cortex-A72).
 * The own console boots, sets and shows its variables and lists devices; it
   has no diagnostics and no firmware update.
 
