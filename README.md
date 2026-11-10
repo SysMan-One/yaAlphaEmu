@@ -40,8 +40,9 @@ Built for x86-64, guest code translator yes, DEC SRM console not included
 
 ### Состав архива выпуска
 
-Для каждой архитектуры - архив `alphaemu-<ver>-<arch>.tar.gz` и файл
-`alphaemu-<ver>-<arch>.tar.gz.sha256`. Архитектуры:
+Для каждой архитектуры - архив `alphaemu-<ver>-<arch>.tar.gz`, его
+контрольная сумма `alphaemu-<ver>-<arch>.tar.gz.sha256` и подпись
+`alphaemu-<ver>-<arch>.tar.gz.minisig`. Архитектуры:
 
 * `x86_64` - статический двоичный файл, с транслятором гостевого кода (JIT);
 * `aarch64` - статический двоичный файл, с транслятором гостевого кода (JIT,
@@ -62,6 +63,27 @@ Built for x86-64, guest code translator yes, DEC SRM console not included
 | `LICENSE-musl.txt` | лицензия библиотеки musl |
 | `SHA256SUMS` | контрольные суммы файлов комплекта |
 
+### Проверка подписи
+
+Архивы подписаны ключом [minisign](https://jedisct1.github.io/minisign/).
+Контрольная сумма ловит только порчу при скачивании, а подпись - ещё и
+подмену: подделать её без закрытого ключа нельзя. Открытый ключ (он же в
+файле `minisign.pub` этого репозитория):
+
+```
+RWQl4NAqFsHKkNoHkS52WSZSk+2kb+e58DWYpoi/jVFa6TqOTAm3Ph14
+```
+
+Проверка (пакет `minisign` есть в Debian, Ubuntu, Fedora и др.):
+
+```
+minisign -Vm alphaemu-<ver>-<arch>.tar.gz -P RWQl4NAqFsHKkNoHkS52WSZSk+2kb+e58DWYpoi/jVFa6TqOTAm3Ph14
+```
+
+Должно быть `Signature and comment signature verified`. Если minisign пишет
+`Signature verification failed` - архив не тот, что мы выпустили: не
+запускайте его и напишите нам. Подписаны все выпуски, начиная с 1.00.45.
+
 ### Требования к хосту
 
 * 64-битный Linux: x86-64 с инструкцией CMPXCHG16B или aarch64 (ARMv8),
@@ -76,6 +98,7 @@ Built for x86-64, guest code translator yes, DEC SRM console not included
 
 ```
 sha256sum -c alphaemu-<ver>-<arch>.tar.gz.sha256
+minisign -Vm alphaemu-<ver>-<arch>.tar.gz -P RWQl4NAqFsHKkNoHkS52WSZSk+2kb+e58DWYpoi/jVFa6TqOTAm3Ph14
 tar xzf alphaemu-<ver>-<arch>.tar.gz
 cd alphaemu-<ver>-<arch>
 cp samples/alphaemu-native.cfg /полный/путь/alphaemu.cfg
@@ -196,8 +219,9 @@ What is modelled:
 
 ### What is in a release archive
 
-For each architecture there is an archive `alphaemu-<ver>-<arch>.tar.gz` and
-a file `alphaemu-<ver>-<arch>.tar.gz.sha256`. The architectures:
+For each architecture there is an archive `alphaemu-<ver>-<arch>.tar.gz`, its
+checksum `alphaemu-<ver>-<arch>.tar.gz.sha256` and its signature
+`alphaemu-<ver>-<arch>.tar.gz.minisig`. The architectures:
 
 * `x86_64` - a static binary with the guest code translator (JIT);
 * `aarch64` - a static binary with the guest code translator (JIT, since 1.00.53).
@@ -217,6 +241,27 @@ Inside the archive:
 | `LICENSE-musl.txt` | the licence of the musl library |
 | `SHA256SUMS` | checksums of the kit's files |
 
+### Checking the signature
+
+The archives are signed with a [minisign](https://jedisct1.github.io/minisign/)
+key. A checksum only catches a broken download; a signature also catches a
+swapped file: nobody can make one without the secret key. The public key
+(also in the file `minisign.pub` of this repository):
+
+```
+RWQl4NAqFsHKkNoHkS52WSZSk+2kb+e58DWYpoi/jVFa6TqOTAm3Ph14
+```
+
+To check (the `minisign` package is in Debian, Ubuntu, Fedora and others):
+
+```
+minisign -Vm alphaemu-<ver>-<arch>.tar.gz -P RWQl4NAqFsHKkNoHkS52WSZSk+2kb+e58DWYpoi/jVFa6TqOTAm3Ph14
+```
+
+You must see `Signature and comment signature verified`. If minisign says
+`Signature verification failed`, the archive is not the one we released: do
+not run it, and tell us. All releases from 1.00.45 on are signed.
+
 ### Host requirements
 
 * 64-bit Linux: x86-64 with the CMPXCHG16B instruction or aarch64 (ARMv8),
@@ -231,6 +276,7 @@ Inside the archive:
 
 ```
 sha256sum -c alphaemu-<ver>-<arch>.tar.gz.sha256
+minisign -Vm alphaemu-<ver>-<arch>.tar.gz -P RWQl4NAqFsHKkNoHkS52WSZSk+2kb+e58DWYpoi/jVFa6TqOTAm3Ph14
 tar xzf alphaemu-<ver>-<arch>.tar.gz
 cd alphaemu-<ver>-<arch>
 cp samples/alphaemu-native.cfg /full/path/alphaemu.cfg
