@@ -1,5 +1,7 @@
 # yaAlphaEmu - AlphaEmu, эмулятор AlphaServer ES40 / AlphaServer ES40 emulator
 
+[![kits](https://github.com/SysMan-One/yaAlphaEmu/actions/workflows/kits.yml/badge.svg)](https://github.com/SysMan-One/yaAlphaEmu/actions/workflows/kits.yml)
+
 *Русский текст - первым, English below.*
 
 ## Русский
@@ -64,6 +66,10 @@ Built for x86-64, guest code translator yes, DEC SRM console not included
 | `SHA256SUMS` | контрольные суммы файлов комплекта |
 
 ### Проверка подписи
+
+Значок `kits` вверху - еженедельная проверка в GitHub Actions: для всех выпусков
+на x86_64 и aarch64 скачиваются архивы, сверяются `.sha256`, подпись и
+`SHA256SUMS` комплекта, запускается `alphaemu --version`.
 
 Архивы подписаны ключом [minisign](https://jedisct1.github.io/minisign/).
 Контрольная сумма ловит только порчу при скачивании, а подпись - ещё и
@@ -242,6 +248,10 @@ Inside the archive:
 | `SHA256SUMS` | checksums of the kit's files |
 
 ### Checking the signature
+
+The `kits` badge at the top is a weekly check in GitHub Actions: for every
+release, on x86_64 and aarch64, the archives are downloaded, their `.sha256`,
+signature and the kit's `SHA256SUMS` checked, and `alphaemu --version` run.
 
 The archives are signed with a [minisign](https://jedisct1.github.io/minisign/)
 key. A checksum only catches a broken download; a signature also catches a

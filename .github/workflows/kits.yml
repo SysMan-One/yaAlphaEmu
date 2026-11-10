@@ -1,0 +1,75 @@
+# Check the published kits as a user would: for every release, download the
+# archive of the runner's architecture, check its .sha256 and its minisign
+# signature (key: minisign.pub of this repository), unpack it, check the
+# kit's own SHA256SUMS and run `alphaemu --version`.
+#
+# Проверка выпущенных комплектов глазами пользователя: для каждого выпуска
+# архив своей архитектуры, его .sha256 и подпись minisign (ключ - minisign.pub
+# этого репозитория), SHA256SUMS внутри комплекта и `alphaemu --version`.
+
+name: kits
+
+on:
+  release:
+    types: [published, edited]
+  push:
+    branches: [main]
+    paths: [minisign.pub, .github/workflows/kits.yml]
+  schedule:
+    - cron: "17 4 * * 1"  # every Monday: the files must still be there and intact
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - runner: ubuntu-24.04
+            arch: x86_64
+          - runner: ubuntu-24.04-arm
+            arch: aarch64
+    runs-on: ${{ matrix.runner }}
+    name: kits (${{ matrix.arch }})
+    env:
+      GH_TOKEN: ${{ github.token }}
+      ARCH: ${{ matrix.arch }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install minisign
+        run: sudo apt-get update -q && sudo apt-get install -y -q minisign
+
+      - name: Check every release
+        run: |
+          set -u
+          fail=0
+          tags=$(gh api "repos/$GITHUB_REPOSITORY/releases" --paginate -q '.[] | select(.draft | not) | .tag_name' | sort -V)
+          [ -n "$tags" ] || { echo "::error::no releases"; exit 1; }
+          for tag in $tags; do
+            ver=${tag#v}
+            kit=alphaemu-$ver-$ARCH
+            dir=$RUNNER_TEMP/$tag
+            mkdir -p "$dir"
+            echo "::group::$tag $ARCH"
+            if ! gh release download "$tag" -R "$GITHUB_REPOSITORY" -D "$dir" \
+                 -p "$kit.tar.gz" -p "$kit.tar.gz.sha256" -p "$kit.tar.gz.minisig"; then
+              echo "::error::$tag: cannot download $kit.tar.gz, .sha256, .minisig"; fail=1; echo "::endgroup::"; continue
+            fi
+            ok=1
+            (cd "$dir" && sha256sum -c "$kit.tar.gz.sha256") || { echo "::error::$tag: $kit.tar.gz.sha256 does not match"; ok=0; }
+            minisign -Vm "$dir/$kit.tar.gz" -p minisign.pub || { echo "::error::$tag: bad minisign signature on $kit.tar.gz"; ok=0; }
+            if [ $ok = 1 ]; then
+              tar xzf "$dir/$kit.tar.gz" -C "$dir"
+              (cd "$dir/$kit" && sha256sum -c --quiet SHA256SUMS) || { echo "::error::$tag: SHA256SUMS inside the kit does not match"; ok=0; }
+              out=$("$dir/$kit/alphaemu" --version 2>&1) || { echo "::error::$tag: alphaemu --version failed"; ok=0; }
+              echo "$out"
+              echo "$out" | head -1 | grep -q "^AlphaEmu $ver (" || { echo "::error::$tag: --version does not say AlphaEmu $ver"; ok=0; }
+            fi
+            [ $ok = 1 ] && echo "$tag $ARCH: OK" || fail=1
+            echo "::endgroup::"
+          done
+          exit $fail
