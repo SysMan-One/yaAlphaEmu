@@ -128,6 +128,11 @@ OpenVMS и на слойные продукты. Ничего из этого н
 (https://codeberg.org/SysManOne/yaAlphaEmu). Укажите версию (`--version`),
 архитектуру, файл параметров и фрагмент журнала.
 
+### Поддержать проект
+
+Помочь развитию AlphaEmu пожертвованием, тестами или сообщением об ошибке -
+см. `SUPPORT.md`.
+
 ### Лицензия
 
 Бесплатно для некоммерческого использования (личное и учебное, некоммерческие
@@ -265,6 +270,11 @@ layered products you use. None of it is provided.
 Use the Issues of this repository on Codeberg
 (https://codeberg.org/SysManOne/yaAlphaEmu). Give the version (`--version`),
 the architecture, your parameter file and a piece of the log.
+
+### Support the project
+
+To help AlphaEmu grow with a donation, tests or a bug report, see
+`SUPPORT.md`.
 
 ### Licence
 

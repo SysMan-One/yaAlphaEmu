@@ -1,0 +1,13 @@
+# Кнопка Sponsor на GitHub (Codeberg этот файл не показывает, там ссылка в README на SUPPORT.md).
+# Sponsor button on GitHub (Codeberg does not show it; there the README links SUPPORT.md).
+# Замените <...> настоящими ссылками и раскомментируйте нужное.
+# custom: принимает до 4 ссылок.
+
+custom:
+  - https://codeberg.org/SysManOne/yaAlphaEmu/src/branch/main/SUPPORT.md
+#  - <BOOSTY LINK>
+#  - <CLOUDTIPS LINK>
+# patreon: <name>
+# ko_fi: <name>
+# liberapay: <name>
+# open_collective: <name>
