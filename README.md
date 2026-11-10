@@ -152,8 +152,8 @@ DEC, Alpha, AlphaServer, OpenVMS и другие названия - товарн
 | Проект | Что это | Состояние | URL |
 |---|---|---|---|
 | yaVTERM | шифрованный терминал и передача файлов для OpenVMS | готов | https://gitlab.com/SysMan-One/yavterm |
-| yaDCX | сборщик комплектов (kits) для OpenVMS, выпуск X-02-00ECO01 | готов | https://codeberg.org/SysManOne/yaDCX |
-| yaDX | DX, полноэкранный файловый менеджер для OpenVMS; комплекты в выпусках | готов | https://codeberg.org/SysManOne/yaDX |
+| yaDCX | сборщик комплектов (kits) для OpenVMS, выпуск X-02-00ECO01 | готов | https://github.com/SysMan-One/yaDCX |
+| yaDX | DX, полноэкранный файловый менеджер для OpenVMS; комплекты в выпусках | готов | https://github.com/SysMan-One/yaDX |
 
 ---
 
