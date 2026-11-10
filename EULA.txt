@@ -1,5 +1,5 @@
-AlphaEmu - END USER LICENSE AGREEMENT                         X-01-00
-=====================================                         31-OCT-2026
+AlphaEmu - END USER LICENSE AGREEMENT                         X-01-01
+=====================================                         10-NOV-2026
 
 This End User License Agreement ("Agreement") is between you (a person or an
 organisation, "You") and Ruslan R. Laishev ("Licensor"), a natural person,
@@ -16,8 +16,10 @@ AlphaEmu, and delete any copies You have.
    "Software" - the AlphaEmu emulator in binary form (the files
    alphaemu-<version>-<architecture>), its documentation, sample
    configuration files and helper scripts, as published by the Licensor in
-   the kit at https://codeberg.org/SysManOne/yaAlphaEmu, and any update the
-   Licensor publishes there.
+   the kit at https://github.com/SysMan-One/yaAlphaEmu or
+   https://gitlab.com/SysMan-One/yaAlphaEmu (the "Publication Sites"), and
+   any update the Licensor publishes at a Publication Site or at another
+   place the Licensor announces there.
 
    "Guest Software" - any operating system, firmware, program or data that
    You run inside the Software (for example OpenVMS Alpha, its layered
@@ -185,6 +187,6 @@ AlphaEmu, and delete any copies You have.
 
    13.5 Contact: licence questions and commercial licences -
         zator@yandex.ru; bug reports -
-        https://codeberg.org/SysManOne/yaAlphaEmu (issues).
+        https://github.com/SysMan-One/yaAlphaEmu/issues.
 
 Copyright (C) 2026 Ruslan R. Laishev (StarLet Squad). All rights reserved.
