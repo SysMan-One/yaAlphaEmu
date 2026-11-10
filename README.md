@@ -124,8 +124,8 @@ OpenVMS и на слойные продукты. Ничего из этого н
 
 ### Сообщения об ошибках
 
-Через Issues этого репозитория на Codeberg
-(https://codeberg.org/SysManOne/yaAlphaEmu). Укажите версию (`--version`),
+Через Issues этого репозитория на GitHub
+(https://github.com/SysMan-One/yaAlphaEmu/issues). Укажите версию (`--version`),
 архитектуру, файл параметров и фрагмент журнала.
 
 ### Поддержать проект
@@ -267,8 +267,8 @@ layered products you use. None of it is provided.
 
 ### Bug reports
 
-Use the Issues of this repository on Codeberg
-(https://codeberg.org/SysManOne/yaAlphaEmu). Give the version (`--version`),
+Use the Issues of this repository on GitHub
+(https://github.com/SysMan-One/yaAlphaEmu/issues). Give the version (`--version`),
 the architecture, your parameter file and a piece of the log.
 
 ### Support the project

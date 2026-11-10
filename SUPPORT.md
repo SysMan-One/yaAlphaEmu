@@ -36,7 +36,7 @@ JIT на x86-64 и aarch64. Но работы впереди много, и ва
 Деньги - не единственный способ помочь:
 
 - **Сообщите об ошибке** или о том, что у вас заработало: Issues этого
-  репозитория (https://codeberg.org/SysManOne/yaAlphaEmu).
+  репозитория (https://github.com/SysMan-One/yaAlphaEmu/issues).
 - **Расскажите об эмуляторе** тем, кому он может пригодиться.
 - **Помогите с тестами** на своей OpenVMS или на своём железе.
 
@@ -87,7 +87,7 @@ commercial licence and does not change the terms of `EULA.txt`.
 Money is not the only way to help:
 
 - **Report a bug**, or tell us what works for you: the Issues of this
-  repository (https://codeberg.org/SysManOne/yaAlphaEmu).
+  repository (https://github.com/SysMan-One/yaAlphaEmu/issues).
 - **Tell other people** who may need the emulator.
 - **Help with testing** on your own OpenVMS or your own hardware.
 
