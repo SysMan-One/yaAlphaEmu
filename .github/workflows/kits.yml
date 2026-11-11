@@ -1,6 +1,6 @@
 # Check the published kits as a user would: for every release, download the
 # archive of the runner's architecture, check its .sha256 and its minisign
-# signature (key: minisign.pub of this repository), unpack it, check the
+# signature (key: minisign.pub of this repository, pinned in env below), unpack it, check the
 # kit's own SHA256SUMS and run `alphaemu --version`.
 #
 # Проверка выпущенных комплектов глазами пользователя: для каждого выпуска
@@ -21,6 +21,12 @@ on:
 
 permissions:
   contents: read
+
+# The public key is pinned here, not read from the checkout: a release event
+# checks out the release's tag, and tags older than c4e267b have no minisign.pub.
+# It must be the key of minisign.pub; the push trigger on minisign.pub re-runs this.
+env:
+  MINISIGN_PUB: RWQl4NAqFsHKkNoHkS52WSZSk+2kb+e58DWYpoi/jVFa6TqOTAm3Ph14
 
 jobs:
   check:
@@ -47,6 +53,9 @@ jobs:
         run: |
           set -u
           fail=0
+          if [ -f minisign.pub ] && [ "$(sed -n 2p minisign.pub)" != "$MINISIGN_PUB" ]; then
+            echo "::error::minisign.pub and MINISIGN_PUB of the workflow differ"; exit 1
+          fi
           tags=$(gh api "repos/$GITHUB_REPOSITORY/releases" --paginate -q '.[] | select(.draft | not) | .tag_name' | sort -V)
           [ -n "$tags" ] || { echo "::error::no releases"; exit 1; }
           for tag in $tags; do
@@ -61,7 +70,7 @@ jobs:
             fi
             ok=1
             (cd "$dir" && sha256sum -c "$kit.tar.gz.sha256") || { echo "::error::$tag: $kit.tar.gz.sha256 does not match"; ok=0; }
-            minisign -Vm "$dir/$kit.tar.gz" -p minisign.pub || { echo "::error::$tag: bad minisign signature on $kit.tar.gz"; ok=0; }
+            minisign -Vm "$dir/$kit.tar.gz" -P "$MINISIGN_PUB" || { echo "::error::$tag: bad minisign signature on $kit.tar.gz"; ok=0; }
             if [ $ok = 1 ]; then
               tar xzf "$dir/$kit.tar.gz" -C "$dir"
               (cd "$dir/$kit" && sha256sum -c --quiet SHA256SUMS) || { echo "::error::$tag: SHA256SUMS inside the kit does not match"; ok=0; }
