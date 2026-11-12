@@ -19,7 +19,7 @@ AlphaEmu - системный эмулятор AlphaServer ES40 (процесс�
 Пример вывода `--version` (сборка для x86-64):
 
 ```
-AlphaEmu 1.00.53 (X01-00ECO53), DEC Alpha EV6 / AlphaServer ES40 emulator
+AlphaEmu 1.00.54 (X01-00ECO54), DEC Alpha EV6 / AlphaServer ES40 emulator
 Built for x86-64, guest code translator yes, DEC SRM console not included
 53C810 SCSI adapter (tape, scsi.disk*) not included
 ```
@@ -31,10 +31,11 @@ Built for x86-64, guest code translator yes, DEC SRM console not included
   двух QBB, память поровну по QBB, RAD в OpenVMS (RAD_SUPPORT 207);
   системный диск - только на ISP1040;
 * диски на IDE (`DQA0:`, `DQB0:`) и на SCSI-адаптере QLogic ISP1040
-  (`DKA0:`), образы - файлы хоста; образ компакт-диска OpenVMS - как IDE-диск;
+  (`DKA0:`; с `isp.tcq = 1` - очередь команд с тегами и Fast Path DKDRIVER),
+  образы - файлы хоста; образ компакт-диска OpenVMS - как IDE-диск;
 * сеть: DE500-BA (до четырёх адаптеров, `EWA0:`-`EWD0:`), Intel 82540EM
   (`EIA0:`, jumbo-кадры), DEGXA-TA (Broadcom 5703); все - на TAP-устройствах
-  хоста;
+  хоста (у DE500 запись в TAP может идти в своём потоке, `net.tx_thread = 1`);
 * последовательная консоль (`OPA0:`) на терминале или TCP/UNIX-сокете;
 * контрольные точки (checkpoint) состояния;
 * загрузка по сети (MOP) с сервера загрузки OpenVMS или InfoServer;
@@ -201,7 +202,7 @@ is freeware for non-commercial use; commercial licence separately (see "Licence"
 Sample `--version` output (x86-64 build):
 
 ```
-AlphaEmu 1.00.53 (X01-00ECO53), DEC Alpha EV6 / AlphaServer ES40 emulator
+AlphaEmu 1.00.54 (X01-00ECO54), DEC Alpha EV6 / AlphaServer ES40 emulator
 Built for x86-64, guest code translator yes, DEC SRM console not included
 53C810 SCSI adapter (tape, scsi.disk*) not included
 ```
@@ -214,10 +215,12 @@ What is modelled:
   in two QBBs, the memory split over the QBBs, RADs in OpenVMS
   (RAD_SUPPORT 207); the system disk on the ISP1040 only;
 * disks on IDE (`DQA0:`, `DQB0:`) and on the QLogic ISP1040 SCSI adapter
-  (`DKA0:`); the images are host files; the OpenVMS CD image is used as an
+  (`DKA0:`; with `isp.tcq = 1` tagged command queuing and DKDRIVER's Fast
+  Path); the images are host files; the OpenVMS CD image is used as an
   IDE disk;
 * network: DE500-BA (up to four adapters, `EWA0:` to `EWD0:`), Intel 82540EM
-  (`EIA0:`, jumbo frames), DEGXA-TA (Broadcom 5703); all on host TAP devices;
+  (`EIA0:`, jumbo frames), DEGXA-TA (Broadcom 5703); all on host TAP devices
+  (the DE500 can write to its TAP in a thread of its own, `net.tx_thread = 1`);
 * a serial console (`OPA0:`) on the terminal or on a TCP/UNIX socket;
 * checkpoints of the machine state;
 * network boot (MOP) from an OpenVMS boot server or an InfoServer; a
