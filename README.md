@@ -19,7 +19,7 @@ AlphaEmu - системный эмулятор AlphaServer ES40 (процесс�
 Пример вывода `--version` (сборка для x86-64):
 
 ```
-AlphaEmu 1.00.54 (X01-00ECO54), DEC Alpha EV6 / AlphaServer ES40 emulator
+AlphaEmu 1.00.55 (X01-00ECO55), DEC Alpha EV6 / AlphaServer ES40 emulator
 Built for x86-64, guest code translator yes, DEC SRM console not included
 53C810 SCSI adapter (tape, scsi.disk*) not included
 ```
@@ -202,7 +202,7 @@ is freeware for non-commercial use; commercial licence separately (see "Licence"
 Sample `--version` output (x86-64 build):
 
 ```
-AlphaEmu 1.00.54 (X01-00ECO54), DEC Alpha EV6 / AlphaServer ES40 emulator
+AlphaEmu 1.00.55 (X01-00ECO55), DEC Alpha EV6 / AlphaServer ES40 emulator
 Built for x86-64, guest code translator yes, DEC SRM console not included
 53C810 SCSI adapter (tape, scsi.disk*) not included
 ```
